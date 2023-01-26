@@ -1,6 +1,14 @@
 const generateHTML = (team) => {
     // console.log(team, "generate HTML template")
-const manager = team[0].name
+const cards = []
+for (let i = 0; i < team.length; i++) {
+    if(team[i].getRole() === "Manager"){
+        let managerCard = `
+        <h1>${team[i].name}</h1>
+        `
+     cards.push(managerCard)   
+    }
+}
 
     const html = `
     <!DOCTYPE html>
@@ -12,7 +20,7 @@ const manager = team[0].name
     <title>Document</title>
 </head>
 <body>
- ${manager}   
+ ${cards}   
 </body>
 </html>
     `
