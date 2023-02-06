@@ -1,9 +1,9 @@
 const Intern = require ('../lib/intern');
 
 test ('Intern criteria test', () => {
-    const intern = new Intern ('1234', 'George', 'george@gmail.com', 'U of M');
-    expect(intern.id).toBe('1234');
+    const intern = new Intern ('George', 'george@gmail.com', '1', 'University');
     expect(intern.name).toBe('George');
     expect(intern.email).toBe('george@gmail.com');
-    expect(intern.school).toBe('U of M');
+    expect(intern.id).toBe('1');
+    expect(intern.school).toBe('University');
 });
