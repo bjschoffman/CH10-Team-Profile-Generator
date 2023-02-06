@@ -33,15 +33,14 @@ const addManager = () => {
     ]) 
     .then(managerInput => { 
         const newManager = new Manager(
-            team.length +1,
             managerInput.name,
             managerInput.email,
             managerInput.id,
             managerInput.officeNumber
         )
         team.push(newManager)
-        
-    })
+        employeeList();
+    });
 }
 
 const addEngineer = () => {
@@ -71,7 +70,6 @@ const addEngineer = () => {
     .then(engineerInput => {
         
         const newEngineer = new Engineer(
-            team.length +1,
             engineerInput.name,
             engineerInput.email,
             engineerInput.id,
@@ -79,20 +77,78 @@ const addEngineer = () => {
         )
         
         team.push(newEngineer)
-       
+        employeeList();
         
-    })
+    });
 }
 
+const addIntern = () => {
+    inquirer
+    .prompt([
+        {
+            type: "input",
+            name: "name",
+            message: "What is the intern's name?"
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "what is the intern's email?"
+        },
+        {
+            type: "input",
+            name: "id",
+            message: "What is the intern's ID?"
+        },
+        {
+            type: "input",
+            name: "school",
+            message: "What is the intern's school?"
+        }
+    ]) 
+    .then(internInput => {
+        
+        const newIntern = new Intern(
+            internInput.name,
+            internInput.email,
+            internInput.id,
+            internInput.school
+        )
+        
+        team.push(newIntern)
+        employeeList();
+        
+    });
+}
+
+const employeeList = () => {
+    inquirer
+    .prompt({
+        type: "list",
+        name: "employeeTitle",
+        message: "Which employee whould you like to add?",
+        choices: ["Engineer", "Intern","Complete"]
+    })
+        .then((employeeInput) => {
+            if(employeeInput.employeeTitle === "Engineer") {
+                addEngineer();
+            }
+            if(employeeInput.employeeTitle === "Intern") {
+                addIntern();
+            }
+            if(employeeInput.employeeTitle === "Complete") {
+                newHTML();
+            }
+
+    });
+}
 const newHTML = () => {
     const pageHTML = createPage(team)
     console.log(pageHTML)
     fs.writeFile("./dist/index.html", pageHTML, (err) => {
         if (err) throw new Error("HTML did not render.", err)
-    })
+    });
 }
 
 
-
-addManager()
-addEngineer()
+addManager();

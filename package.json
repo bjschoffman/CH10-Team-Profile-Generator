@@ -1,5 +1,27 @@
 {
   "dependencies": {
-    "inquirer": "^8.2.4"
-  }
+    "inquirer": "^8.2.4",
+    "jest": "^29.4.1"
+  },
+  "name": "ch10-team-profile-generator",
+  "description": "Objected-Oriented Programming Challenge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bjschoffman/CH10-Team-Profile-Generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bjschoffman/CH10-Team-Profile-Generator/issues"
+  },
+  "homepage": "https://github.com/bjschoffman/CH10-Team-Profile-Generator#readme"
 }
